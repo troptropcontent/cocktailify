@@ -19,7 +19,7 @@
       </div>
       <div class="cocktail-schema col">
         <ul>
-          <% sum_volume = @cocktail.doses.inject(Cocktail.find("9").doses.first[:description].to_i){ |sum, n| sum + n[:description].to_i}-1 %>
+          <% sum_volume = @cocktail.doses.count > 0 ? @cocktail.doses.inject(@cocktail.doses.first[:description].to_i){ |sum, n| sum + n[:description].to_i}-1 : 0 %>
           <% alpha = 0 %>
           <% @cocktail.doses.each do |thing| %>
               <li style="height:<%= 400*(thing.description.to_i.fdiv(sum_volume)) %>px;background-color: rgba(25, 69, 107, <%= alpha %>);">
