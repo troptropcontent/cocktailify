@@ -1,0 +1,40 @@
+<div class="container">
+  <h1><%= @cocktail.name %></h1>
+</div>
+<div class="container">
+    <div class="cocktail-card-top row">
+      <div class="cocktail-presentation col">
+        <div class="cocktail-presentation">
+          <ul>
+            <% @cocktail.doses.each do |thing| %>
+              <li>
+                <div class="dose-ingredient">
+                  <p><%= "#{thing.description} volume of #{thing.ingredient.name}" %></p>
+                  <%= link_to "D", dose_path(thing), method: "delete" %>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <div class="cocktail-schema col">
+        <ul>
+          <% sum_volume = @cocktail.doses.inject(Cocktail.find("9").doses.first[:description].to_i){ |sum, n| sum + n[:description].to_i}-1 %>
+          <% alpha = 0 %>
+          <% @cocktail.doses.each do |thing| %>
+              <li style="height:<%= 400*(thing.description.to_i.fdiv(sum_volume)) %>px;background-color: rgba(25, 69, 107, <%= alpha %>);">
+                <div class="schema-incredient">
+                  <p><%= thing.ingredient.name %></p>
+                </div>
+              </li>
+              <% alpha += 1.fdiv(@cocktail.doses.count) %>
+          <% end %>
+        </ul>
+
+      </div>
+    </div>
+    <div class="cocktail-card-bottom row">
+      <%= link_to("Add an ingredient",  new_cocktail_dose_path(@cocktail)) %>
+    </div>
+</div>
+

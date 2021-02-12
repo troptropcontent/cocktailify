@@ -1,0 +1,47 @@
+// Place all the styles related to the cocktails controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.cocktail-presentation  {
+  padding-right: 16px;
+  padding: 0px;
+  ul{list-style-type: none;
+      padding: 0px;
+      margin: 0px;
+      .dose-ingredient{
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+}
+
+.cocktail-schema  {
+  padding: 0px;
+  ul{list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+  }
+
+}
+.cocktail-card-top.row {
+  height: 400px;
+}
+
+.cocktail-schema {
+  background-color: rgba(25, 69, 107, 0);
+
+}
+
+.schema-incredient {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  p{
+    display: inline-block;
+    margin: 0px;
+  }
+
+}
